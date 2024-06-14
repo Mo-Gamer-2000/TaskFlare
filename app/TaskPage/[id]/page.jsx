@@ -1,5 +1,7 @@
+import TaskForm from "@/app/(components)/TaskForm";
+
 const TaskPage = ({ params }) => {
-  return <div>TaskPage {params.id}</div>;
+  return <TaskForm />;
 };
 
 export default TaskPage;
