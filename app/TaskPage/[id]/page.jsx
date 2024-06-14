@@ -1,7 +1,7 @@
-const TaskPage = ({ params }) => {
-    return (
-        <div>TaskPage {params.id}</div>
-    )
-}
+import TaskForm from "@/app/(components)/TaskForm";
 
-export default TaskPage
+const TaskPage = ({ params }) => {
+  return <TaskForm />;
+};
+
+export default TaskPage;
