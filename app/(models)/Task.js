@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { global } from "styled-jsx/css";
 
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.Promise = global.Promise;
@@ -19,5 +18,6 @@ const taskSchema = new Schema(
   }
 );
 
-const Task = mongoose.models.Task || mongoose.Model("Task", taskSchema);
+const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);
+
 export default Task;

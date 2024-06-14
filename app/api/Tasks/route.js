@@ -1,0 +1,16 @@
+import Task from "../../(models)/Task";
+import { NextResponse } from "next/server";
+
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const taskData = body.formData;
+
+    await Task.create(taskData);
+
+    return NextResponse.json({ message: "Task Created" }, { status: 201 });
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json({ message: "Error", err }, { status: 500 });
+  }
+}

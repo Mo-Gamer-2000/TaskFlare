@@ -4,20 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const TaskForm = () => {
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
-
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    console.log("SUBMITTED");
-  };
-
+  const router = useRouter();
   const startTaskData = {
     title: "",
     description: "",
@@ -29,12 +16,38 @@ const TaskForm = () => {
 
   const [formData, setFormData] = useState(startTaskData);
 
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+
+    setFormData((preState) => ({
+      ...preState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/Tasks", {
+      method: "POST",
+      body: JSON.stringify({ formData }),
+      //@ts-ignore
+      "Content-Type": "application/json",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to create Tasks");
+    }
+
+    router.refresh();
+    router.push("/");
+  };
+
   return (
     <div className="flex justify-center bg-card">
       <form
+        onSubmit={handleSubmit}
         className="flex flex-col gap-3 w-1/2"
         method="post"
-        onSubmit={handleSubmit}
       >
         <h3>Create Your Task</h3>
         <label>Title</label>
