@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
 
-const ProgressDisplay = () => {
-    return (
-        <div className="w-full bg-gray-200 rounded-full h-2.5">
-            <div className="bg-blue-600 rounded-full h-2.5" style={{ width: "75%" }}>
+const ProgressDisplay = ({ progress }) => {
+  return (
+    <div className="w-full bg-gray-200 rounded-full h-2.5">
+      <div
+        className="bg-blue-600 rounded-full h-2.5"
+        style={{ width: `${progress}%` }}
+      ></div>
+    </div>
+  );
+};
 
-            </div>
-        </div>
-    )
-}
-
-export default ProgressDisplay
+export default ProgressDisplay;

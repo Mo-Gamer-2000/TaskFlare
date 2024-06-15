@@ -10,7 +10,7 @@ const TaskForm = () => {
     description: "",
     priority: 1,
     progress: 0,
-    status: "Not Defined",
+    status: "Not Started",
     category: "Interview Preparation",
   };
 
