@@ -10,7 +10,7 @@ const TaskForm = () => {
     description: "",
     priority: 1,
     progress: 0,
-    status: "Not Started",
+    status: "not started",
     category: "Interview Preparation",
   };
 
@@ -149,9 +149,9 @@ const TaskForm = () => {
 
         <label>Status</label>
         <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="Uncompleted">Uncompleted</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
+          <option value="not started">Not Started</option>
+          <option value="started">Started</option>
+          <option value="done">Done</option>
         </select>
 
         <input type="submit" className="btn text-white" value="Create" />
