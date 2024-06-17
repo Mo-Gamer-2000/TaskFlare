@@ -9,11 +9,11 @@ import Link from "next/link";
 const Nav = () => {
   return (
     <header>
-      <nav className="flex justify-between items-center w-full px-10 py-4 bg-nav">
+      <nav className="flex justify-between items-center w-full px-4 py-4 bg-nav">
         {/* Navigation bar container with background color, padding, and flex layout */}
         <div className="flex items-center space-x-4">
           <Link href="/">
-            <div className="text-default-text font-extrabold lg:text-2xl">
+            <div className="text-default-text font-extrabold lg:text-2xl md:text-2xl">
               Task<span className="text-yellow-400 ">Flare</span>
             </div>
           </Link>
