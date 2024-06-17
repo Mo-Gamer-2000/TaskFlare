@@ -1,11 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Importing useRouter from Next.js for navigation
+import React, { useState } from "react"; // Import React and useState hooks
 
 const TaskForm = ({ task }) => {
-  const EDITMODE = task._id === "new" ? false : true;
-  const router = useRouter();
+  const EDITMODE = task._id === "new" ? false : true; // Determine if the form is in edit mode based on task._id
+  const router = useRouter(); // useRouter hook for navigation
   const startTaskData = {
     title: "",
     description: "",
@@ -15,6 +15,7 @@ const TaskForm = ({ task }) => {
     category: "Interview Preparation",
   };
 
+  // Populate startTaskData if in edit mode
   if (EDITMODE) {
     startTaskData["title"] = task.title;
     startTaskData["description"] = task.description;
@@ -24,8 +25,9 @@ const TaskForm = ({ task }) => {
     startTaskData["category"] = task.category;
   }
 
-  const [formData, setFormData] = useState(startTaskData);
+  const [formData, setFormData] = useState(startTaskData); // State to manage form data
 
+  // Handle form input change
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
@@ -36,8 +38,10 @@ const TaskForm = ({ task }) => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
+
     if (EDITMODE) {
       const res = await fetch(`/api/Tasks/${task._id}`, {
         method: "PUT",
@@ -58,8 +62,8 @@ const TaskForm = ({ task }) => {
       }
     }
 
-    router.push("/");
-    router.refresh();
+    router.push("/"); // Redirect to home page after successful form submission
+    router.refresh(); // Refresh the router to update the page
   };
 
   return (
@@ -70,6 +74,8 @@ const TaskForm = ({ task }) => {
         method="post"
       >
         <h3>{EDITMODE ? "Update Your Task" : "Create Your Task"}</h3>
+
+        {/* Input fields for title */}
         <label>Title</label>
         <input
           id="title"
@@ -80,6 +86,7 @@ const TaskForm = ({ task }) => {
           value={formData.title}
         />
 
+        {/* Textarea for description */}
         <label>Description</label>
         <textarea
           id="description"
@@ -89,7 +96,7 @@ const TaskForm = ({ task }) => {
           value={formData.description}
           rows="5"
         />
-
+        {/* Dropdown for category */}
         <label>Category</label>
         <select
           name="category"
@@ -103,6 +110,7 @@ const TaskForm = ({ task }) => {
           <option value="Shopping List">Shopping List</option>
         </select>
 
+        {/* Radio buttons for priority */}
         <label>Priority</label>
         <div>
           <input
@@ -156,6 +164,7 @@ const TaskForm = ({ task }) => {
           <label>5</label>
         </div>
 
+        {/* Range input for progress */}
         <label>Progress</label>
         <input
           type="range"
@@ -167,6 +176,7 @@ const TaskForm = ({ task }) => {
           onChange={handleChange}
         />
 
+        {/* Dropdown for status */}
         <label>Status</label>
         <select name="status" value={formData.status} onChange={handleChange}>
           <option value="not started">Not Started</option>
@@ -174,6 +184,7 @@ const TaskForm = ({ task }) => {
           <option value="done">Done</option>
         </select>
 
+        {/* Submit button */}
         <input
           type="submit"
           className="btn text-white"
