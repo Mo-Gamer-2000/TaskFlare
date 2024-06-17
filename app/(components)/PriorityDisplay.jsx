@@ -1,24 +1,38 @@
-import { faFire } from "@fortawesome/free-solid-svg-icons"; // Import the 'fire' icon from FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
-import React from "react"; // Import React
+import { faFire } from "@fortawesome/free-solid-svg-icons"; // Importing the fire icon from Font Awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component from Font Awesome React
+import React from "react"; // Importing React library
 
 /**
- * Component to display priority using fire icons.
- * @param {Object} props - The component props.
- * @param {number} props.priority - The priority level (1-5).
- * @returns {JSX.Element} The rendered priority display component.
+ * PriorityDisplay component displays fire icons based on priority level.
+ * @param {number} priority - The priority level (from 0 to 4).
+ * @returns {JSX.Element} The rendered PriorityDisplay component.
  */
 const PriorityDisplay = ({ priority }) => {
-  // Array to hold the class names for each fire icon based on priority
-  const fireIcons = [1, 2, 3, 4, 5].map((level) => (
-    <FontAwesomeIcon
-      key={level}
-      icon={faFire}
-      className={`pr-1 ${priority >= level ? "text-yellow-400" : "text-white"}`}
-    />
-  ));
-
-  return <div className="flex justify-start align-baseline">{fireIcons}</div>;
+  return (
+    <div className="flex justify-start align-baseline">
+      {/* Flex container for fire icons */}
+      <FontAwesomeIcon
+        icon={faFire} // Fire icon from Font Awesome
+        className={`pr-1 ${priority > 0 ? "text-yellow-400" : "text-white"}`} // Conditional styling based on priority level
+      />
+      <FontAwesomeIcon
+        icon={faFire}
+        className={`pr-1 ${priority > 1 ? "text-yellow-400" : "text-white"}`}
+      />
+      <FontAwesomeIcon
+        icon={faFire}
+        className={`pr-1 ${priority > 2 ? "text-yellow-400" : "text-white"}`}
+      />
+      <FontAwesomeIcon
+        icon={faFire}
+        className={`pr-1 ${priority > 3 ? "text-yellow-400" : "text-white"}`}
+      />
+      <FontAwesomeIcon
+        icon={faFire}
+        className={`pr-1 ${priority > 4 ? "text-yellow-400" : "text-white"}`}
+      />
+    </div>
+  );
 };
 
-export default PriorityDisplay;
+export default PriorityDisplay; // Exporting PriorityDisplay component as default

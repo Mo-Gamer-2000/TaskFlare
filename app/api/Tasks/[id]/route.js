@@ -1,88 +1,59 @@
-import Task from "@/app/(models)/Task"; // Ensure this path is correct and consistent
-import { NextResponse } from "next/server"; // Import NextResponse from Next.js
+import Task from "@/app/(models)/Task"; // Importing Task model from the specified path
+import { NextResponse } from "next/server"; // Importing NextResponse from next/server for handling responses
 
 /**
- * Handles retrieving a task by its ID.
- * @param {Request} req - The HTTP request object.
- * @param {Object} context - The request context.
- * @param {Object} context.params - The route parameters.
- * @returns {Promise<NextResponse>} A JSON response with the found task or an error message.
+ * GET method for retrieving a task by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} params - Parameters extracted from the request URL.
+ * @returns {Object} NextResponse with JSON data and status code.
  */
 export async function GET(req, { params }) {
   try {
-    const { id } = params; // Destructure the id from params
-    const foundTask = await Task.findOne({ _id: id }); // Find the task by ID
+    const { id } = params; // Extracting ID from parameters
+    const foundTask = await Task.findOne({ _id: id }); // Finding task by ID in the database
 
-    if (!foundTask) {
-      return NextResponse.json({ message: "Task not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ foundTask }, { status: 200 }); // Return the found task
+    return NextResponse.json({ foundTask }, { status: 200 }); // Returning JSON response with found task and HTTP status 200
   } catch (error) {
-    console.error("Error retrieving task:", error); // Log the error for debugging
-    return NextResponse.json(
-      { message: "Error retrieving task", error: error.message },
-      { status: 500 }
-    ); // Return an error response
+    return NextResponse.json({ message: "Error" }, { status: 500 }); // Handling errors with HTTP status 500
   }
 }
 
 /**
- * Handles deleting a task by its ID.
- * @param {Request} req - The HTTP request object.
- * @param {Object} context - The request context.
- * @param {Object} context.params - The route parameters.
- * @returns {Promise<NextResponse>} A JSON response indicating success or failure.
+ * DELETE method for deleting a task by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} params - Parameters extracted from the request URL.
+ * @returns {Object} NextResponse with JSON data and status code.
  */
 export async function DELETE(req, { params }) {
   try {
-    const { id } = params; // Destructure the id from params
-    const deletedTask = await Task.findByIdAndDelete(id); // Delete the task by ID
+    const { id } = params; // Extracting ID from parameters
+    await Task.findByIdAndDelete(id); // Deleting task by ID in the database
 
-    if (!deletedTask) {
-      return NextResponse.json({ message: "Task not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ message: "Task Deleted" }, { status: 200 }); // Return a success response
+    return NextResponse.json({ message: "Task Deleted" }, { status: 200 }); // Returning JSON response with success message and HTTP status 200
   } catch (error) {
-    console.error("Error deleting task:", error); // Log the error for debugging
-    return NextResponse.json(
-      { message: "Error deleting task", error: error.message },
-      { status: 500 }
-    ); // Return an error response
+    return NextResponse.json({ message: "Error" }, { status: 500 }); // Handling errors with HTTP status 500
   }
 }
 
 /**
- * Handles updating a task by its ID.
- * @param {Request} req - The HTTP request object.
- * @param {Object} context - The request context.
- * @param {Object} context.params - The route parameters.
- * @returns {Promise<NextResponse>} A JSON response indicating success or failure.
+ * PUT method for updating a task by ID.
+ * @param {Object} req - The request object.
+ * @param {Object} params - Parameters extracted from the request URL.
+ * @returns {Object} NextResponse with JSON data and status code.
  */
 export async function PUT(req, { params }) {
   try {
-    const { id } = params; // Destructure the id from params
-    const body = await req.json(); // Parse the JSON body of the request
-    const taskData = body.formData; // Extract task data from the request body
+    const { id } = params; // Extracting ID from parameters
+    const body = await req.json(); // Parsing JSON data from request body
+    const taskData = body.formData; // Extracting formData from request body
 
-    const updatedTask = await Task.findByIdAndUpdate(id, taskData, {
-      new: true,
-    }); // Update the task by ID and return the new document
+    // Updating task by ID with updated data from formData
+    const updateTaskData = await Task.findByIdAndUpdate(id, {
+      ...taskData,
+    });
 
-    if (!updatedTask) {
-      return NextResponse.json({ message: "Task not found" }, { status: 404 });
-    }
-
-    return NextResponse.json(
-      { message: "Task Updated", task: updatedTask },
-      { status: 200 }
-    ); // Return a success response
+    return NextResponse.json({ message: "Task Updated" }, { status: 200 }); // Returning JSON response with success message and HTTP status 200
   } catch (error) {
-    console.error("Error updating task:", error); // Log the error for debugging
-    return NextResponse.json(
-      { message: "Error updating task", error: error.message },
-      { status: 500 }
-    ); // Return an error response
+    return NextResponse.json({ message: "Error" }, { status: 500 }); // Handling errors with HTTP status 500
   }
 }
