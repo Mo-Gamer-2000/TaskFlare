@@ -19,7 +19,7 @@ const TaskForm = ({ task }) => {
     priority: 1,
     progress: 0,
     status: "not started",
-    category: "Interview Preparation",
+    category: "Grocery List",
   };
 
   // If in edit mode, populate form data with task details
@@ -79,6 +79,20 @@ const TaskForm = ({ task }) => {
     router.refresh(); // Refresh the page to update task list
   };
 
+  // Created an array of categories
+  const categories = [
+    "Grocery List",
+    "Work Projects",
+    "Home Maintenance",
+    "Fitness Goals",
+    "Personal Development",
+    "Family Events",
+    "Travel Plans",
+    "Social Events",
+    "Healthcare",
+    "Financial Management",
+  ];
+
   return (
     <div className="flex justify-center bg-card">
       {/* Flex container for centering content with card background */}
@@ -113,11 +127,12 @@ const TaskForm = ({ task }) => {
           value={formData.category} // Controlled dropdown value
           onChange={handleChange} // Dropdown change handler
         >
-          <option value="Interview Preparation">Interview Preparation</option>
-          <option value="Team Meeting">Team Meeting</option>
-          <option value="Grocery List">Grocery List</option>
-          <option value="Course">Course Started</option>
-          <option value="Shopping List">Shopping List</option>
+          {/* Mapping through categories */}
+          {categories?.map((category, _index) => (
+            <option key={_index} value={category}>
+              {category}
+            </option>
+          ))}
         </select>
         <label>Priority</label> {/* Form label for priority radio buttons */}
         <div>
