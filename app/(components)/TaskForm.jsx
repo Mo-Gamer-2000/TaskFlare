@@ -1,7 +1,7 @@
 "use client"; // Indicates that this script runs on the client side
 
-import { useRouter } from "next/navigation"; // Importing useRouter hook from Next.js for client-side navigation
-import React, { useState } from "react"; // Importing React and useState hook
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 /**
  * TaskForm component renders a form for creating or editing a task.
@@ -201,4 +201,4 @@ const TaskForm = ({ task }) => {
   );
 };
 
-export default TaskForm; // Exporting TaskForm component as default
+export default TaskForm;

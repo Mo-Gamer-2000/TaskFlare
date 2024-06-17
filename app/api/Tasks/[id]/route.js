@@ -1,5 +1,5 @@
-import Task from "@/app/(models)/Task"; // Importing Task model from the specified path
-import { NextResponse } from "next/server"; // Importing NextResponse from next/server for handling responses
+import Task from "@/app/(models)/Task";
+import { NextResponse } from "next/server";
 
 /**
  * GET method for retrieving a task by ID.

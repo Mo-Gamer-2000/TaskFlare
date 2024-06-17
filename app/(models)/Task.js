@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose"; // Importing mongoose and Schema from mongoose library
+import mongoose, { Schema } from "mongoose";
 
 mongoose.connect(process.env.MONGODB_URI); // Connecting to MongoDB database using MONGODB_URI from environment variables
 mongoose.Promise = global.Promise; // Setting Mongoose to use global Promise implementation
@@ -22,4 +22,4 @@ const taskSchema = new Schema(
 // Creating the Task model based on taskSchema
 const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);
 
-export default Task; // Exporting Task model as default
+export default Task;

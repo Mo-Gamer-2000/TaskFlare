@@ -1,6 +1,6 @@
-import { faHome, faListCheck } from "@fortawesome/free-solid-svg-icons"; // Importing specific solid icons (Home and List Check)
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component from Font Awesome React
-import Link from "next/link"; // Importing Link component from Next.js for client-side navigation
+import { faHome, faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
 /**
  * Navigation bar component for the application.
@@ -9,19 +9,15 @@ import Link from "next/link"; // Importing Link component from Next.js for clien
 const Nav = () => {
   return (
     <nav className="flex justify-between bg-nav p-4">
-      
       {/* Navigation bar container with background color, padding, and flex layout */}
       <div className="flex items-center space-x-4">
-        
         {/* Flex container for navigation items with space between */}
         <Link href="/">
-          
           {/* Link to home page */}
           <FontAwesomeIcon icon={faHome} className="icon" />
           {/* Home icon with specific styling class */}
         </Link>
         <Link href="/TaskPage/new">
-          
           {/* Link to create new task page */}
           <FontAwesomeIcon icon={faListCheck} className="icon" />
           {/* List Check icon with specific styling class */}
@@ -35,4 +31,4 @@ const Nav = () => {
   );
 };
 
-export default Nav; // Exporting Nav component as default
+export default Nav;

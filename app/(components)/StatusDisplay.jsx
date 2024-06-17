@@ -41,4 +41,4 @@ const StatusDisplay = ({ status }) => {
   );
 };
 
-export default StatusDisplay; // Exporting StatusDisplay component as default
+export default StatusDisplay;

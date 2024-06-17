@@ -1,8 +1,8 @@
 "use client"; // Indicates this file is for client-side code
 
-import { faX } from "@fortawesome/free-solid-svg-icons"; // Importing the faX icon from Font Awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component
-import { useRouter } from "next/navigation"; // Importing useRouter hook from Next.js navigation module
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useRouter } from "next/navigation";
 
 // DeleteBlock component definition
 const DeleteBlock = ({ id }) => {
@@ -31,4 +31,4 @@ const DeleteBlock = ({ id }) => {
   );
 };
 
-export default DeleteBlock; // Exporting DeleteBlock component as default
+export default DeleteBlock;

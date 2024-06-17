@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component from Font Awesome React
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"; // Importing specific brand icons (GitHub and LinkedIn)
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 /**
  * Footer component for the application.
@@ -34,4 +34,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; // Exporting Footer component as default
+export default Footer;

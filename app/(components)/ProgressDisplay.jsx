@@ -15,4 +15,4 @@ const ProgressDisplay = ({ progress }) => {
   );
 };
 
-export default ProgressDisplay; // Exporting ProgressDisplay component as default
+export default ProgressDisplay;

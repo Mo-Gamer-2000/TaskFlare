@@ -1,6 +1,6 @@
-import { faFire } from "@fortawesome/free-solid-svg-icons"; // Importing the fire icon from Font Awesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component from Font Awesome React
-import React from "react"; // Importing React library
+import { faFire } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 /**
  * PriorityDisplay component displays fire icons based on priority level.
@@ -8,31 +8,16 @@ import React from "react"; // Importing React library
  * @returns {JSX.Element} The rendered PriorityDisplay component.
  */
 const PriorityDisplay = ({ priority }) => {
-  return (
-    <div className="flex justify-start align-baseline">
-      {/* Flex container for fire icons */}
-      <FontAwesomeIcon
-        icon={faFire} // Fire icon from Font Awesome
-        className={`pr-1 ${priority > 0 ? "text-yellow-400" : "text-white"}`} // Conditional styling based on priority level
-      />
-      <FontAwesomeIcon
-        icon={faFire}
-        className={`pr-1 ${priority > 1 ? "text-yellow-400" : "text-white"}`}
-      />
-      <FontAwesomeIcon
-        icon={faFire}
-        className={`pr-1 ${priority > 2 ? "text-yellow-400" : "text-white"}`}
-      />
-      <FontAwesomeIcon
-        icon={faFire}
-        className={`pr-1 ${priority > 3 ? "text-yellow-400" : "text-white"}`}
-      />
-      <FontAwesomeIcon
-        icon={faFire}
-        className={`pr-1 ${priority > 4 ? "text-yellow-400" : "text-white"}`}
-      />
-    </div>
-  );
+  // Array to generate fire icons based on priority level
+  const fireIcons = Array.from({ length: 5 }, (_, index) => (
+    <FontAwesomeIcon
+      key={index}
+      icon={faFire} // Fire icon from Font Awesome
+      className={`pr-1 ${priority > index ? "text-yellow-400" : "text-white"}`} // Conditional styling based on priority level
+    />
+  ));
+
+  return <div className="flex justify-start align-baseline">{fireIcons}</div>;
 };
 
-export default PriorityDisplay; // Exporting PriorityDisplay component as default
+export default PriorityDisplay;
