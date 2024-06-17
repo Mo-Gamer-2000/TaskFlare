@@ -3,7 +3,7 @@ import React from "react";
 const CreateUser = () => {
   return (
     <div>
-      <h1>ONLY Admins</h1>
+      <h1 className="text-purple-accent">ONLY Admins</h1>
     </div>
   );
 };

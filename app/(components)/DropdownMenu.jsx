@@ -1,18 +1,32 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <div>
         <button
           type="button"
           className="inline-flex justify-center w-full rounded-md border border-yellow-400 shadow-sm px-4 py-2 bg-white text-sm font-medium text-purple-accent hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400"
           id="menu-button"
-          aria-expanded="true"
+          aria-expanded={isOpen}
           aria-haspopup="true"
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -34,28 +48,31 @@ const DropdownMenu = () => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <div
+          className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          onMouseLeave={() => setIsOpen(false)}
+        >
           <div className="flex flex-col py-2">
             <Link
-              href="/create-user"
+              href="/CreateUser"
               className="block px-4 py-2 text-purple-accent hover:bg-yellow-200 rounded-md"
             >
               Create User
             </Link>
             <Link
-              href="/client-member"
+              href="/ClientMember"
               className="block px-4 py-2 text-purple-accent hover:bg-yellow-200 rounded-md"
             >
               Client Member
             </Link>
             <Link
-              href="/member"
+              href="/Member"
               className="block px-4 py-2 text-purple-accent hover:bg-yellow-200 rounded-md"
             >
               Member
             </Link>
             <Link
-              href="/public"
+              href="/Public"
               className="block px-4 py-2 text-purple-accent hover:bg-yellow-200 rounded-md"
             >
               Public

@@ -3,7 +3,7 @@
 const Member = () => {
   return (
     <div>
-      <h1>Client Member</h1>
+      <h1 className="text-purple-accent">Client Member</h1>
     </div>
   );
 };
