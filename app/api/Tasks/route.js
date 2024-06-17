@@ -1,4 +1,4 @@
-import Task from "../../(models)/Task";
+import Task from "@/app/(models)/Task";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -10,7 +10,15 @@ export async function POST(req) {
 
     return NextResponse.json({ message: "Task Created" }, { status: 201 });
   } catch (err) {
-    console.log(err);
+    return NextResponse.json({ message: "Error", err }, { status: 500 });
+  }
+}
+
+export async function GET() {
+  try {
+    const tasks = await Task.find();
+    return NextResponse.json({ tasks }, { status: 200 });
+  } catch (error) {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   }
 }
