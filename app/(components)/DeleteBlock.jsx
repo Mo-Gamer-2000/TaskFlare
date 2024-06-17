@@ -25,7 +25,7 @@ const DeleteBlock = ({ id }) => {
   return (
     <FontAwesomeIcon
       icon={faX} // Using the faX icon imported from Font Awesome
-      className=" text-white hover:cursor-pointer hover:text-red-400 text-lg" // Styling classes for icon
+      className=" text-page hover:cursor-pointer hover:text-purple-accent text-lg" // Styling classes for icon
       onClick={deleteTask} // onClick handler to trigger deleteTask function on icon click
     />
   );

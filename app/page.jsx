@@ -34,7 +34,7 @@ const Dashboard = async () => {
         {tasks &&
           uniqueCategories?.map((uniqueCategory, categoryIndex) => (
             <div key={categoryIndex} className="mb-4">
-              <h2 className="text-black">{uniqueCategory}</h2>
+              <h2 className="text-purple-accent">{uniqueCategory}</h2>
               {/* Rendering grid layout for tasks */}
               <div className="lg:grid grid-cols-2 xl:grid-cols-4">
                 {tasks

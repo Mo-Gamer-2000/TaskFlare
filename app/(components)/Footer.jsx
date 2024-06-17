@@ -7,7 +7,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
  */
 const Footer = () => {
   return (
-    <footer className="bg-nav text-white p-4 text-center">
+    <footer className="bg-nav text-default-text p-3 text-center">
       {/* Footer container with background color, padding, and text color */}
       <div className="flex justify-center space-x-4">
         {/* Flex container for social media icons with space between */}
@@ -19,6 +19,8 @@ const Footer = () => {
           <FontAwesomeIcon icon={faGithub} className="text-2xl" />
           {/* GitHub icon with larger size */}
         </a>
+        <p className="my-1 px-2">&copy; {new Date().getFullYear()} Moeez Abdul</p>
+        {/* Copyright notice with current year and author's name */}
         <a
           href="https://www.linkedin.com/in/moeezabdul/" // Link to LinkedIn profile
           target="_blank" // Opens link in a new tab
@@ -28,8 +30,6 @@ const Footer = () => {
           {/* LinkedIn icon with larger size */}
         </a>
       </div>
-      <p className="mt-2">&copy; {new Date().getFullYear()} Moeez Abdul</p>
-      {/* Copyright notice with current year and author's name */}
     </footer>
   );
 };

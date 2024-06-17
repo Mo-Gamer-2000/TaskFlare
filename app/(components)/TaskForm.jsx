@@ -101,7 +101,9 @@ const TaskForm = ({ task }) => {
         className="flex flex-col gap-3 w-1/2" // Flex column with gap and width 50%
         method="post" // HTTP method
       >
-        <h3>{EDITMODE ? "Update Your Task" : "Create Your Task"}</h3>
+        <h2 className="text-purple-accent text-center">
+          {EDITMODE ? "Update Your Task" : "Create Your Task"}
+        </h2>
         {/* Conditional heading based on edit mode */}
         <label>Title</label> {/* Form label for title */}
         <input
@@ -208,7 +210,7 @@ const TaskForm = ({ task }) => {
         </select>
         <input
           type="submit"
-          className="btn text-white" // Submit button with styling
+          className="btn text-default-text" // Submit button with styling
           value={EDITMODE ? "Update" : "Create"} // Button text based on edit mode
         />
       </form>
