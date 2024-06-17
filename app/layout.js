@@ -1,9 +1,11 @@
 import Nav from "./(components)/Nav";
+import Footer from "./(components)/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+
 
 // Stopped adding CSS to the Icons, which makes the Huge
 config.autoAddCss = false;
@@ -24,6 +26,7 @@ export default function RootLayout({ children }) {
           <div className="flex-grow overflow-y-auto bg-page text-default-text">
             {children}
           </div>
+          <Footer />
         </div>
       </body>
     </html>
