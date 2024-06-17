@@ -42,7 +42,6 @@ const TaskForm = ({ task }) => {
       const res = await fetch(`/api/Tasks/${task._id}`, {
         method: "PUT",
         body: JSON.stringify({ formData }),
-        //@ts-ignore
         "Content-Type": "application/json",
       });
       if (!res.ok) {
@@ -52,7 +51,6 @@ const TaskForm = ({ task }) => {
       const res = await fetch("/api/Tasks", {
         method: "POST",
         body: JSON.stringify({ formData }),
-        //@ts-ignore
         "Content-Type": "application/json",
       });
       if (!res.ok) {
@@ -60,8 +58,8 @@ const TaskForm = ({ task }) => {
       }
     }
 
-    router.refresh();
     router.push("/");
+    router.refresh();
   };
 
   return (

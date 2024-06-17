@@ -33,8 +33,6 @@ export async function PUT(req, { params }) {
       ...taskData,
     });
 
-    console.log("UPDATED TASK!!!", taskData);
-
     return NextResponse.json({ message: "Task Updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "Error" }, { status: 500 });
