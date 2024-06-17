@@ -1,6 +1,8 @@
+"use client"
 import { faHome, faListCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import DropdownMenu from "./DropdownMenu";
 
 /**
  * Navigation bar component for the application.
@@ -29,10 +31,7 @@ const Nav = () => {
             {/* List Check icon with specific styling class */}
           </Link>
         </div>
-        <div>
-          <p className="text-default-text">Example@gmail.com</p>
-          {/* Placeholder email text with specific styling class */}
-        </div>
+        <DropdownMenu />
       </nav>
     </header>
   );
