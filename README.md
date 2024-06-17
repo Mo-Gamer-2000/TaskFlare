@@ -1,34 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TaskFlare
+
+TaskFlare is a full-stack application built using Next.js, React, Node.js, MongoDB, and TailwindCSS. It provides a streamlined interface for managing tasks, offering functionalities for creating, updating, and deleting tasks with dynamic status updates and priority levels.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Ensure you have Node.js and npm installed on your local development environment.
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Mo-Gamer-2000/TaskFlare.git
+   cd TaskFlare
+   ```
+   
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+Create a .env.local file in the root directory and add your MongoDB URI:
+```
+  MONGODB_URI=your_mongodb_uri
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running the Development Server
+Start the development server:
+```bash
+npm run dev
+```
+Open http://localhost:3000 in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Folder Structure
+* /pages: Next.js pages including TaskPage and API routes.
+* /components: Reusable React components for UI elements.
+* /public: Static assets used in the application.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Technologies Used
+* Frontend: React, Next.js, TailwindCSS
+* Backend: Node.js, Express.js
+* Database: MongoDB, Mongoose
 
-## Learn More
+### Features
+* Task Management: Create, update, and delete tasks.
+* Dynamic Updates: Real-time updates of task status and priority.
+* Responsive Design: Utilizes TailwindCSS for responsive and modern UI.
 
-To learn more about Next.js, take a look at the following resources:
+### Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your improvements. For major changes, please open an issue first to discuss what you would like to change.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Acknowledgements
+* Built with ❤️ by Moeez Abdul
+* Icons by Font Awesome
+* Dependencies managed with npm
 
-## Deploy on Vercel
+You can copy and paste this content directly into your README.md file. Adjust any placeholders (`your_mongodb_uri`) and paths according to your actual project setup and needs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
