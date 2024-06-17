@@ -1,44 +1,34 @@
-"use client";
+"use client"; // Indicates this file is for client-side code
 
-import { faX } from "@fortawesome/free-solid-svg-icons"; // Import the 'X' icon from FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon component
-import { useRouter } from "next/navigation"; // Import useRouter hook from Next.js for navigation
+import { faX } from "@fortawesome/free-solid-svg-icons"; // Importing the faX icon from Font Awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component
+import { useRouter } from "next/navigation"; // Importing useRouter hook from Next.js navigation module
 
-/**
- * Component to handle task deletion.
- * @param {Object} props - The component props.
- * @param {string} props.id - The ID of the task to be deleted.
- * @returns {JSX.Element} The rendered component.
- */
+// DeleteBlock component definition
 const DeleteBlock = ({ id }) => {
-  const router = useRouter(); // Initialise the useRouter hook for navigation
+  const router = useRouter(); // Initialising useRouter hook for navigation
 
-  /**
-   * Deletes a task by its ID.
-   */
+  // Async function to handle deletion of a task
   const deleteTask = async () => {
-    try {
-      const res = await fetch(`http://localhost:3000/api/Tasks/${id}`, {
-        method: "DELETE", // Set the HTTP method to DELETE
-      });
+    // Sending a DELETE request to the API endpoint for the specified task ID
+    const res = await fetch(`http://localhost:3000/api/Tasks/${id}`, {
+      method: "DELETE", // Using HTTP DELETE method
+    });
 
-      if (res.ok) {
-        router.refresh(); // Refresh the page to reflect the changes
-      } else {
-        console.error("Failed to delete task:", await res.text()); // Log error if the response is not OK
-      }
-    } catch (error) {
-      console.error("Error deleting task:", error); // Log any errors that occur during the fetch
+    // If the deletion was successful (HTTP status 200-299), refresh the page
+    if (res.ok) {
+      router.refresh(); // Refreshing the current route using Next.js router
     }
   };
 
+  // Return FontAwesomeIcon component representing a delete icon
   return (
     <FontAwesomeIcon
-      icon={faX} // Set the icon to 'X'
-      className="text-white hover:cursor-pointer hover:text-red-400 text-lg" // Set the CSS classes
-      onClick={deleteTask} // Set the onClick event to call deleteTask
+      icon={faX} // Using the faX icon imported from Font Awesome
+      className=" text-white hover:cursor-pointer hover:text-red-400 text-lg" // Styling classes for icon
+      onClick={deleteTask} // onClick handler to trigger deleteTask function on icon click
     />
   );
 };
 
-export default DeleteBlock;
+export default DeleteBlock; // Exporting DeleteBlock component as default

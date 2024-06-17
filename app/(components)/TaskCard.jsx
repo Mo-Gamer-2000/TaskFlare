@@ -1,20 +1,19 @@
-import Link from "next/link"; // Import Link component from Next.js
-import DeleteBlock from "./DeleteBlock"; // Import DeleteBlock component
-import PriorityDisplay from "./PriorityDisplay"; // Import PriorityDisplay component
-import ProgressDisplay from "./ProgressDisplay"; // Import ProgressDisplay component
-import StatusDisplay from "./StatusDisplay"; // Import StatusDisplay component
+import Link from "next/link"; // Importing Link component from Next.js for client-side navigation
+import DeleteBlock from "./DeleteBlock"; // Importing DeleteBlock component from local file
+import PriorityDisplay from "./PriorityDisplay"; // Importing PriorityDisplay component from local file
+import ProgressDisplay from "./ProgressDisplay"; // Importing ProgressDisplay component from local file
+import StatusDisplay from "./StatusDisplay"; // Importing StatusDisplay component from local file
 
 /**
- * Component to display a task card with details.
- * @param {Object} props - The component props.
- * @param {Object} props.task - The task object containing details.
- * @returns {JSX.Element} The rendered task card component.
+ * TaskCard component displays a card representing a task.
+ * @param {Object} task - The task object containing task details.
+ * @returns {JSX.Element} The rendered TaskCard component.
  */
 const TaskCard = ({ task }) => {
   /**
-   * Function to format timestamp to a readable date string.
-   * @param {string} timestamp - The timestamp string.
-   * @returns {string} The formatted date string.
+   * formatTimestamp function formats the given timestamp into a readable date string.
+   * @param {number} timestamp - The timestamp in milliseconds.
+   * @returns {string} The formatted date string (e.g., "DD/MM/YYYY HH:mm AM/PM").
    */
   const formatTimestamp = (timestamp) => {
     const options = {
@@ -27,38 +26,55 @@ const TaskCard = ({ task }) => {
     };
 
     const date = new Date(timestamp);
-    const formattedDate = date.toLocaleString("en-GB", options);
+    const formattedDate = date.toLocaleString("en-GB", options); // Formatting date in UK English locale
 
     return formattedDate;
   };
 
   return (
     <div className="flex flex-col bg-card hover:bg-card-hover rounded-md shadow-lg p-3 m-2">
+      
+      {/* Task card container with background color, shadow, padding, and margin */}
       <div className="flex mb-3">
-        <PriorityDisplay priority={task.priority} />{" "}
-        {/* Display priority using PriorityDisplay component */}
+        
+        {/* Flex container for priority display and delete button */}
+        <PriorityDisplay priority={task.priority} />
+        {/* Rendering PriorityDisplay component with priority prop */}
         <div className="ml-auto">
-          <DeleteBlock id={task._id} />{" "}
-          {/* Render DeleteBlock component for deleting tasks */}
+          
+          {/* Margin auto to align delete button to the right */}
+          <DeleteBlock id={task._id} />
+          {/* Rendering DeleteBlock component with task ID prop */}
         </div>
       </div>
       <Link href={`/TaskPage/${task._id}`} style={{ display: "contents" }}>
-        {/* Link to individual task page */}
-        <h4>{task.title}</h4>
-        <hr className="h-px border-0 bg-page mb-2" /> {/* Horizontal rule */}
-        <p className="whitespace-pre-wrap">{task.description}</p>{" "}
-        {/* Task description */}
-        <div className="flex-grow"></div> {/* Spacer to push content below */}
+        
+        {/* Link to task details page */}
+        <h4>{task.title}</h4> {/* Task title */}
+        <hr className="h-px border-0 bg-page mb-2" />
+        {/* Horizontal rule with styling */}
+        <p className="whitespace-pre-wrap">{task.description}</p>
+        {/* Task description with preserved whitespace */}
+        <div className="flex-grow"></div>
+        {/* Flex-grow to push content to bottom */}
         <div className="flex mt-2">
+          
+          {/* Flex container for timestamp and progress */}
           <div className="flex flex-col">
-            <p className="text-xs my-1">{formatTimestamp(task.createdAt)}</p>{" "}
-            {/* Format and display creation date */}
-            <ProgressDisplay progress={task.progress} />{" "}
-            {/* Display progress using ProgressDisplay component */}
+            
+            {/* Flex column for timestamp and progress */}
+            <p className="text-xs my-1">
+              {formatTimestamp(task.createdAt)}
+            </p>
+            {/* Formatted timestamp */}
+            <ProgressDisplay progress={task.progress} />
+            {/* Rendering ProgressDisplay component with progress prop */}
           </div>
           <div className="ml-auto flex items-end">
-            <StatusDisplay status={task.status} />{" "}
-            {/* Display status using StatusDisplay component */}
+            
+            {/* Margin auto and align items at the end for status */}
+            <StatusDisplay status={task.status} />
+            {/* Rendering StatusDisplay component with status prop */}
           </div>
         </div>
       </Link>
@@ -66,4 +82,4 @@ const TaskCard = ({ task }) => {
   );
 };
 
-export default TaskCard;
+export default TaskCard; // Exporting TaskCard component as default

@@ -1,57 +1,25 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose"; // Importing mongoose and Schema from mongoose library
 
-// Establish a connection to the MongoDB database using the connection string from environment variables
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-// Use native JavaScript promises with mongoose
-mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI); // Connecting to MongoDB database using MONGODB_URI from environment variables
+mongoose.Promise = global.Promise; // Setting Mongoose to use global Promise implementation
 
-// Define the schema for the Task model
+// Defining the schema for the Task model
 const taskSchema = new Schema(
   {
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    description: {
-      type: String,
-      trim: true,
-    },
-    category: {
-      type: String,
-      trim: true,
-    },
-    priority: {
-      type: Number,
-      min: 1,
-      max: 5,
-      default: 3,
-    },
-    progress: {
-      type: Number,
-      min: 0,
-      max: 100,
-      default: 0,
-    },
-    status: {
-      type: String,
-      enum: ["pending", "in-progress", "completed"],
-      default: "pending",
-    },
-    active: {
-      type: Boolean,
-      default: true,
-    },
+    title: String, // Title of the task (type: String)
+    description: String, // Description of the task (type: String)
+    category: String, // Category of the task (type: String)
+    priority: Number, // Priority of the task (type: Number)
+    progress: Number, // Progress of the task (type: Number)
+    status: String, // Status of the task (type: String)
+    active: Boolean, // Boolean flag indicating if the task is active (type: Boolean)
   },
   {
-    timestamps: true, // Automatically add createdAt and updatedAt timestamps
+    timestamps: true, // Automatically add createdAt and updatedAt fields to documents
   }
 );
 
-// Create or retrieve the Task model
+// Creating the Task model based on taskSchema
 const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);
 
-export default Task;
+export default Task; // Exporting Task model as default

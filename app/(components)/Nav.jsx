@@ -1,37 +1,38 @@
-import { faHome, faListCheck } from "@fortawesome/free-solid-svg-icons"; // Import specific icons from FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
-import Link from "next/link"; // Import the Link component from Next.js
+import { faHome, faListCheck } from "@fortawesome/free-solid-svg-icons"; // Importing specific solid icons (Home and List Check)
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Importing FontAwesomeIcon component from Font Awesome React
+import Link from "next/link"; // Importing Link component from Next.js for client-side navigation
 
 /**
- * Navigation component for the application.
- * @returns {JSX.Element} The rendered navigation component.
+ * Navigation bar component for the application.
+ * @returns {JSX.Element} The rendered navigation bar component.
  */
 const Nav = () => {
   return (
     <nav className="flex justify-between bg-nav p-4">
-      {" "}
-      {/* Main navigation container */}
+      
+      {/* Navigation bar container with background color, padding, and flex layout */}
       <div className="flex items-center space-x-4">
-        {" "}
-        {/* Container for navigation links */}
+        
+        {/* Flex container for navigation items with space between */}
         <Link href="/">
-          {" "}
-          {/* Link to the home page */}
-          <FontAwesomeIcon icon={faHome} className="icon" /> {/* Home icon */}
+          
+          {/* Link to home page */}
+          <FontAwesomeIcon icon={faHome} className="icon" />
+          {/* Home icon with specific styling class */}
         </Link>
         <Link href="/TaskPage/new">
-          {" "}
-          {/* Link to the new task page */}
-          <FontAwesomeIcon icon={faListCheck} className="icon" />{" "}
-          {/* New task icon */}
+          
+          {/* Link to create new task page */}
+          <FontAwesomeIcon icon={faListCheck} className="icon" />
+          {/* List Check icon with specific styling class */}
         </Link>
       </div>
       <div>
-        <p className="text-default-text">Example@gmail.com</p>{" "}
-        {/* Placeholder for user email or other information */}
+        <p className="text-default-text">Example@gmail.com</p>
+        {/* Placeholder email text with specific styling class */}
       </div>
     </nav>
   );
 };
 
-export default Nav;
+export default Nav; // Exporting Nav component as default

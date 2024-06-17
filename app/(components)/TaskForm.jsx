@@ -1,11 +1,18 @@
-"use client";
+"use client"; // Indicates that this script runs on the client side
 
-import { useRouter } from "next/navigation"; // Importing useRouter from Next.js for navigation
-import React, { useState } from "react"; // Import React and useState hooks
+import { useRouter } from "next/navigation"; // Importing useRouter hook from Next.js for client-side navigation
+import React, { useState } from "react"; // Importing React and useState hook
 
+/**
+ * TaskForm component renders a form for creating or editing a task.
+ * @param {Object} task - The task object to edit (optional if creating new task).
+ * @returns {JSX.Element} The rendered TaskForm component.
+ */
 const TaskForm = ({ task }) => {
-  const EDITMODE = task._id === "new" ? false : true; // Determine if the form is in edit mode based on task._id
+  const EDITMODE = task._id === "new" ? false : true; // Checking if in edit mode based on task ID
   const router = useRouter(); // useRouter hook for navigation
+
+  // Initial form data for creating a new task
   const startTaskData = {
     title: "",
     description: "",
@@ -15,7 +22,7 @@ const TaskForm = ({ task }) => {
     category: "Interview Preparation",
   };
 
-  // Populate startTaskData if in edit mode
+  // If in edit mode, populate form data with task details
   if (EDITMODE) {
     startTaskData["title"] = task.title;
     startTaskData["description"] = task.description;
@@ -25,83 +32,86 @@ const TaskForm = ({ task }) => {
     startTaskData["category"] = task.category;
   }
 
-  const [formData, setFormData] = useState(startTaskData); // State to manage form data
+  const [formData, setFormData] = useState(startTaskData); // State hook for form data
 
-  // Handle form input change
+  // Function to handle input changes
   const handleChange = (e) => {
     const value = e.target.value;
     const name = e.target.name;
 
-    setFormData((preState) => ({
-      ...preState,
+    setFormData((prevState) => ({
+      ...prevState,
       [name]: value,
     }));
   };
 
-  // Handle form submission
+  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
+    // If in edit mode, send PUT request to update task
     if (EDITMODE) {
       const res = await fetch(`/api/Tasks/${task._id}`, {
         method: "PUT",
         body: JSON.stringify({ formData }),
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (!res.ok) {
-        throw new Error("Failed to update Tasks");
+        throw new Error("Failed to update task");
       }
     } else {
+      // Otherwise, send POST request to create new task
       const res = await fetch("/api/Tasks", {
         method: "POST",
         body: JSON.stringify({ formData }),
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (!res.ok) {
-        throw new Error("Failed to create Tasks");
+        throw new Error("Failed to create task");
       }
     }
 
-    router.push("/"); // Redirect to home page after successful form submission
-    router.refresh(); // Refresh the router to update the page
+    router.push("/"); // Navigate back to the home page after submission
+    router.refresh(); // Refresh the page to update task list
   };
 
   return (
     <div className="flex justify-center bg-card">
+      {/* Flex container for centering content with card background */}
       <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-3 w-1/2"
-        method="post"
+        onSubmit={handleSubmit} // Form submission handler
+        className="flex flex-col gap-3 w-1/2" // Flex column with gap and width 50%
+        method="post" // HTTP method
       >
         <h3>{EDITMODE ? "Update Your Task" : "Create Your Task"}</h3>
-
-        {/* Input fields for title */}
-        <label>Title</label>
+        {/* Conditional heading based on edit mode */}
+        <label>Title</label> {/* Form label for title */}
         <input
           id="title"
           name="title"
           type="text"
-          onChange={handleChange}
-          required={true}
-          value={formData.title}
+          onChange={handleChange} // Input change handler
+          required={true} // Required field validation
+          value={formData.title} // Controlled input value
         />
-
-        {/* Textarea for description */}
-        <label>Description</label>
+        <label>Description</label> {/* Form label for description */}
         <textarea
           id="description"
           name="description"
-          onChange={handleChange}
-          required={true}
-          value={formData.description}
-          rows="5"
+          onChange={handleChange} // Textarea change handler
+          required={true} // Required field validation
+          value={formData.description} // Controlled textarea value
+          rows="5" // Number of rows
         />
-        {/* Dropdown for category */}
-        <label>Category</label>
+        <label>Category</label> {/* Form label for category dropdown */}
         <select
           name="category"
-          value={formData.category}
-          onChange={handleChange}
+          value={formData.category} // Controlled dropdown value
+          onChange={handleChange} // Dropdown change handler
         >
           <option value="Interview Preparation">Interview Preparation</option>
           <option value="Team Meeting">Team Meeting</option>
@@ -109,16 +119,14 @@ const TaskForm = ({ task }) => {
           <option value="Course">Course Started</option>
           <option value="Shopping List">Shopping List</option>
         </select>
-
-        {/* Radio buttons for priority */}
-        <label>Priority</label>
+        <label>Priority</label> {/* Form label for priority radio buttons */}
         <div>
           <input
             type="radio"
             id="priority-1"
             name="priority"
-            onChange={handleChange}
-            value={1}
+            onChange={handleChange} // Radio button change handler - Below
+            value={1} // Radio button value - Below
             checked={formData.priority == 1}
           />
           <label>1</label>
@@ -163,36 +171,34 @@ const TaskForm = ({ task }) => {
           />
           <label>5</label>
         </div>
-
-        {/* Range input for progress */}
-        <label>Progress</label>
+        <label>Progress</label> {/* Form label for progress range input */}
         <input
           type="range"
           id="progress"
           name="progress"
-          value={formData.progress}
-          min="0"
-          max="100"
-          onChange={handleChange}
+          value={formData.progress} // Controlled range input value
+          min="0" // Minimum value
+          max="100" // Maximum value
+          onChange={handleChange} // Range input change handler
         />
-
-        {/* Dropdown for status */}
-        <label>Status</label>
-        <select name="status" value={formData.status} onChange={handleChange}>
+        <label>Status</label> {/* Form label for status dropdown */}
+        <select
+          name="status"
+          value={formData.status} // Controlled dropdown value
+          onChange={handleChange} // Dropdown change handler
+        >
           <option value="not started">Not Started</option>
           <option value="started">Started</option>
           <option value="done">Done</option>
         </select>
-
-        {/* Submit button */}
         <input
           type="submit"
-          className="btn text-white"
-          value={EDITMODE ? "Update" : "Create"}
+          className="btn text-white" // Submit button with styling
+          value={EDITMODE ? "Update" : "Create"} // Button text based on edit mode
         />
       </form>
     </div>
   );
 };
 
-export default TaskForm;
+export default TaskForm; // Exporting TaskForm component as default
