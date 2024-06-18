@@ -1,9 +1,11 @@
-import React from "react";
+import UserForm from "../(components)/UserForm";
 
 const CreateUser = () => {
   return (
     <div>
-      <h1 className="text-purple-accent">ONLY Admins</h1>
+      <h1 className="text-purple-accent">
+        <UserForm />
+      </h1>
     </div>
   );
 };
