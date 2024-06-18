@@ -13,7 +13,7 @@ const PriorityDisplay = ({ priority }) => {
     <FontAwesomeIcon
       key={index}
       icon={faFire} // Fire icon from Font Awesome
-      className={`pr-1 ${priority > index ? "text-yellow-400" : "text-white"}`} // Conditional styling based on priority level
+      className={`pr-1 ${priority > index ? "text-yellow-400" : "text-page"}`} // Conditional styling based on priority level
     />
   ));
 
