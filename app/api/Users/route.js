@@ -1,7 +1,6 @@
-const User = require("@/app/(models)/User");
-const { NextResponse } = require("next/server");
-const bcrypt = require("bcrypt");
-
+import User from "@/app/(models)/User";
+import { NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
 export async function POST(req) {
   try {
