@@ -30,6 +30,17 @@ const Dashboard = async () => {
 
   return (
     <div className="px-4 py-2 text-center">
+      <div className="items-center text-center">
+        <h1 className="text-purple-accent">
+          Welcome to Task<span className="text-yellow-400">Flare</span>
+        </h1>
+        <hr className="border-2 border-purple-accent my-4" />
+        <p className="text-gray-700 text-lg">
+          Boost your productivity and ignite your tasks with TaskFlare!
+        </p>
+        <hr className="border-2 border-purple-accent my-4" />
+      </div>
+
       <div>
         {tasks &&
           uniqueCategories?.map((uniqueCategory, categoryIndex) => (
