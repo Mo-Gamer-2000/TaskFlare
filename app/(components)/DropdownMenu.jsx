@@ -77,6 +77,12 @@ const DropdownMenu = () => {
             >
               Public
             </Link>
+            <Link
+              href="/LoginPage"
+              className="block px-4 py-2 text-purple-accent hover:bg-yellow-200 rounded-md"
+            >
+              Login
+            </Link>
           </div>
         </div>
       )}
