@@ -25,9 +25,15 @@ Ensure you have Node.js and npm installed on your local development environment.
 
 4. Set up environment variables:
    
-   Create a .env.local file in the root directory and add your MongoDB URI:
+   Create a .env.local file in the root directory and add your environment variables:
    ```
-     MONGODB_URI=your_mongodb_uri
+      MONGODB_URI=your_mongodb_uri
+      MONGODB_AUTH_URI=your_mongodb_auth_uri
+      GITHUB_ID=your_github_id
+      GITHUB_SECRET=your_github_secret
+      GOOGLE_ID=your_google_id
+      GOOGLE_SECRET=your_google_secret
+      NEXTAUTH_SECRET=your_nextauth_secret
    ```
 
 ### Running the Development Server
@@ -56,6 +62,7 @@ Open http://localhost:3000 in your browser to view the application.
 * Task Management: Create, update, and delete tasks.
 * Dynamic Updates: Real-time updates of task status and priority.
 * Responsive Design: Utilises TailwindCSS for responsive and modern UI.
+* Role-Based Authentication: Implement authentication on both server-rendered and client-rendered pages with OAuth providers like Google and GitHub, and custom authentication provider using MongoDB.
 
 ### Contributing
 
@@ -70,10 +77,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 * Built with ❤️ by Moeez Abdul
 * Icons by Font Awesome
 * Dependencies managed with npm
-
-You can copy and paste this content directly into your README.md file. Adjust any placeholders (`your_mongodb_uri`) and paths according to your actual project setup and needs.
-
-
-
-
-
