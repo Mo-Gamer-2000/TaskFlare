@@ -30,8 +30,8 @@ export const options = {
           role: userRole,
         };
       },
-      clientId: processOptions.env.GOOGLE_ID,
-      clientSecret: processOptions.env.GOOGLE_Secret,
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_Secret,
     }),
   ],
   callbacks: {
