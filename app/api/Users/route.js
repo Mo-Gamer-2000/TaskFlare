@@ -1,4 +1,4 @@
-const User = require("@/app/(models)/User");
+import User from "@/app/(models)/User";
 const { NextResponse } = require("next/server");
 const bcrypt = require("bcrypt");
 
