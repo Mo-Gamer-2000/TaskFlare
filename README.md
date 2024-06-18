@@ -1,6 +1,6 @@
 # TaskFlare
 
-TaskFlare is a full-stack application built using Next.js, React, Node.js, MongoDB, and TailwindCSS. It provides a streamlined interface for managing tasks, offering functionalities for creating, updating, and deleting tasks with dynamic status updates and priority levels.
+TaskFlare is a full-stack application built with Next.js, React, Node.js, MongoDB, and TailwindCSS. It offers a streamlined interface for managing tasks with functionalities for creating, updating, and deleting tasks. Features include dynamic status updates, priority levels, and role-based authentication with support for OAuth providers like Google and GitHub.
 
 ## Getting Started
 
