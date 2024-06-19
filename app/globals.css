@@ -1,14 +1,22 @@
+/* Include Tailwind's base styles */
 @tailwind base;
+
+/* Include Tailwind's component styles */
 @tailwind components;
+
+/* Include Tailwind's utility styles */
 @tailwind utilities;
 
+/* Apply global styles to all elements */
 * {
-  padding: 0;
-  margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0; /* Reset padding */
+  margin: 0; /* Reset margin */
+  font-family: Verdana, Geneva, Tahoma, sans-serif; /* Set default font family */
 }
 
+/* Base layer for structural elements */
 @layer base {
+  /* Apply font bold to all headings */
   h1,
   h2,
   h3,
@@ -16,46 +24,55 @@
     @apply font-bold;
   }
 
+  /* Styles for specific heading sizes */
   h1 {
-    @apply text-4xl;
+    @apply text-4xl; /* Extra large heading */
   }
 
   h2 {
-    @apply text-3xl;
+    @apply text-3xl; /* Large heading */
   }
 
   h3 {
-    @apply text-2xl;
+    @apply text-2xl; /* Medium heading */
   }
 
   h4 {
-    @apply text-xl;
+    @apply text-xl; /* Small heading */
   }
 
+  /* Default paragraph styles */
   p {
-    @apply text-sm text-default-text;
+    @apply text-sm text-default-text; /* Small text with default text color */
   }
 
+  /* Styling for forms */
   form {
-    @apply rounded-xl p-4;
+    @apply rounded-xl p-4; /* Rounded corners, padding */
   }
 
+  /* Styling for labels in forms */
   label {
-    @apply mt-4;
+    @apply mt-4; /* Margin top */
   }
 
+  /* Styling for form inputs, select, and textarea */
   input,
   select,
   textarea {
-    @apply m-1 rounded p-1 text-black;
+    @apply m-1 rounded p-1 text-black; /* Margin, rounded corners, padding, black text */
   }
 }
 
+/* Component layer for reusable UI components */
 @layer components {
+  /* Styling for an icon class */
   .icon {
-    @apply text-default-text text-xl;
+    @apply text-default-text text-xl; /* Default text color, larger size */
   }
+
+  /* Styling for a button class */
   .btn {
-    @apply hover:no-underline bg-purple-accent hover:bg-purple-accent-hover tracking-wider w-full text-center text-default-text font-bold cursor-pointer uppercase px-4 py-2 rounded-md transition-colors block;
+    @apply hover:no-underline bg-purple-accent hover:bg-purple-accent-hover tracking-wider w-full text-center text-default-text font-bold cursor-pointer uppercase px-4 py-2 rounded-md transition-colors block; /* Button styles with hover effects */
   }
 }
