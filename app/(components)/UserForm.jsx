@@ -1,25 +1,34 @@
+// Enable client-side rendering
 "use client";
 
+// Import useRouter hook from next/navigation for navigation
 import { useRouter } from "next/navigation";
+// Import React and useState for state management
 import React, { useState } from "react";
 
+// Define the UserForm component
 const UserForm = () => {
-  const router = useRouter();
-  const [formData, setFormData] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter(); // Initialize router for navigation
+  const [formData, setFormData] = useState({}); // State to store form data
+  const [errorMessage, setErrorMessage] = useState(""); // State to store error messages
 
+  // Handle changes to form inputs
   const handleChange = (e) => {
-    const value = e.target.value;
-    const name = e.target.name;
+    const value = e.target.value; // Get the value of the input
+    const name = e.target.name; // Get the name of the input
+    // Update the formData state with the new value
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMessage("");
+    e.preventDefault(); // Prevent the default form submission
+    setErrorMessage(""); // Clear any previous error messages
+
+    // Send a POST request to the /api/Users endpoint with formData
     const res = await fetch("/api/Users", {
       method: "POST",
       body: JSON.stringify({ formData }),
@@ -28,16 +37,18 @@ const UserForm = () => {
       },
     });
 
+    // Check if the response is not ok
     if (!res.ok) {
-      const response = await res.json();
-      setErrorMessage(response.error);
+      const response = await res.json(); // Parse the response
+      setErrorMessage(response.error); // Set the error message
     } else {
-      router.refresh();
-      router.push("/");
+      router.refresh(); // Refresh the page
+      router.push("/"); // Navigate to the home page
     }
   };
 
   return (
+    // Container div with TailwindCSS classes for styling
     <div className="flex flex-col items-center bg-page py-8 px-4 min-h-screen">
       <form
         onSubmit={handleSubmit}
@@ -98,9 +109,11 @@ const UserForm = () => {
           className="bg-yellow-400 text-purple-accent text-lg md:text-xl py-2 rounded hover:bg-yellow-200 transition duration-300"
         />
       </form>
+      {/* Display error message if it exists */}
       {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
     </div>
   );
 };
 
+// Export the UserForm component for use in other parts of the application
 export default UserForm;
