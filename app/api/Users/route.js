@@ -1,10 +1,5 @@
-// Import the User model from the specified path
 import User from "@/app/(models)/User";
-
-// Import NextResponse from Next.js server module
 const { NextResponse } = require("next/server");
-
-// Import bcrypt for password hashing
 const bcrypt = require("bcrypt");
 
 // Define the POST function to handle user registration requests

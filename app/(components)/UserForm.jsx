@@ -1,9 +1,7 @@
 // Enable client-side rendering
 "use client";
 
-// Import useRouter hook from next/navigation for navigation
 import { useRouter } from "next/navigation";
-// Import React and useState for state management
 import React, { useState } from "react";
 
 // Define the UserForm component

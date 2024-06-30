@@ -1,4 +1,3 @@
-// Import Nav and Footer components from the specified paths
 import Nav from "./(components)/Nav";
 import Footer from "./(components)/Footer";
 

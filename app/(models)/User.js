@@ -1,6 +1,4 @@
-// Import mongoose and Schema from mongoose package
 import mongoose, { Schema } from "mongoose";
-// Import global from styled-jsx/css for global promise
 import { global } from "styled-jsx/css";
 
 // Connect to MongoDB using the URI stored in environment variables

@@ -1,4 +1,3 @@
-// Import Link component from next/link for navigation
 import Link from "next/link";
 
 // Define the DropdownMenu component

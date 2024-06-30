@@ -1,10 +1,7 @@
-// Import authentication providers from NextAuth.js
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-// Import User model
-import User from "@/app/(models)/User";
-// Import bcrypt for password hashing and comparison
+import User from "@/app/(models)/User";arison
 import bcrypt from "bcrypt";
 
 // Define authentication options for NextAuth.js
