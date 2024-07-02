@@ -1,5 +1,5 @@
 import React from "react";
-import TaskCard from "./(components)/TaskCard"; // Importing TaskCard component from the specified path
+import TaskCard from "./(components)/TaskCard";
 
 /**
  * Function to fetch all tasks from the API.
