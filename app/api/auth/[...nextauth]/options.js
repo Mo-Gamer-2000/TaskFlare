@@ -1,7 +1,7 @@
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "@/app/(models)/User";arison
+import User from "@/app/(models)/User";
 import bcrypt from "bcrypt";
 
 // Define authentication options for NextAuth.js
